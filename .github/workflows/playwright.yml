@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
@@ -39,15 +39,15 @@ jobs:
 
       - name: Upload HTML report
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: playwright-report-${{ matrix.browser }}
           path: playwright-report/
           retention-days: 14
 
       - name: Upload test results and failure evidence
-        if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() && hashFiles('test-results/**') != '' }}
+        uses: actions/upload-artifact@v6
         with:
           name: test-results-${{ matrix.browser }}
           path: test-results/
