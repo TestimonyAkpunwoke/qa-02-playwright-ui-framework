@@ -13,12 +13,12 @@ export class CartPage {
   constructor(page: Page) {
     this.page = page;
     this.title = page.getByTestId('title');
-    this.cartItems = page.getByTestId('inventory-item');
+    this.cartItems = page.locator('.cart_item');
     this.checkoutButton = page.getByTestId('checkout');
     this.continueShoppingButton = page.getByTestId('continue-shopping');
     this.productName = this.cartItems.getByTestId('inventory-item-name');
     this.productPrice = this.cartItems.getByTestId('inventory-item-price');
-    this.productQuantity = this.page.getByTestId('item-quantity');
+    this.productQuantity = this.cartItems.getByTestId('item-quantity');
   }
 
   async goto() {
