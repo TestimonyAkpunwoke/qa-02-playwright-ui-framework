@@ -16,8 +16,8 @@ export class CartPage {
     this.cartItems = page.getByTestId('inventory-item');
     this.checkoutButton = page.getByTestId('checkout');
     this.continueShoppingButton = page.getByTestId('continue-shopping');
-    this.productName = this.page.getByTestId('inventory-item-name');
-    this.productPrice = this.page.getByTestId('inventory-item-price');
+    this.productName = this.cartItems.getByTestId('inventory-item-name');
+    this.productPrice = this.cartItems.getByTestId('inventory-item-price');
     this.productQuantity = this.page.getByTestId('item-quantity');
   }
 
