@@ -6,6 +6,7 @@ export class InventoryPage {
   readonly inventoryItems: Locator;
   readonly cartLink: Locator;
   readonly sortDropdown: Locator;
+  readonly cartBadge: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class InventoryPage {
     this.inventoryItems = page.getByTestId('inventory-item');
     this.cartLink = page.getByTestId('shopping-cart-link');
     this.sortDropdown = page.getByTestId('product-sort-container');
+    this.cartBadge = this.page.getByTestId('shopping-cart-badge');
   }
 
   async goto() {
@@ -21,5 +23,13 @@ export class InventoryPage {
 
   async sortProducts(option: string) {
     await this.sortDropdown.selectOption(option);
+  }
+
+  async addBackpackToCart() {
+    await this.page.getByTestId('add-to-cart-sauce-labs-backpack').click();
+  }
+
+  async addBikeLightToCart() {
+    await this.page.getByTestId('add-to-cart-sauce-labs-bike-light').click();
   }
 }
