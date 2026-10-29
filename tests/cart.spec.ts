@@ -1,9 +1,10 @@
+
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 
-test('TC-CART-001: added product appears in the shopping cart', async ({ page }) => {
+test('TC-CART-001: added product appears in the shopping cart @regression', async ({ page }) => {
   // Arrange: log in with a valid account.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -23,7 +24,7 @@ test('TC-CART-001: added product appears in the shopping cart', async ({ page })
   await expect(cartPage.cartItems).toContainText('Sauce Labs Backpack');
 });
 
-test('TC-CART-002: product can be removed from the shopping cart', async ({ page }) => {
+test('TC-CART-002: product can be removed from the shopping cart @regression', async ({ page }) => {
   // Arrange: log in and add the backpack.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -42,7 +43,7 @@ test('TC-CART-002: product can be removed from the shopping cart', async ({ page
   await expect(cartPage.cartItems).toHaveCount(0);
 });
 
-test('TC-CART-003: cart badge updates when a product is added and removed', async ({ page }) => {
+test('TC-CART-003: cart badge updates when a product is added and removed @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -66,7 +67,7 @@ test('TC-CART-003: cart badge updates when a product is added and removed', asyn
   await expect(inventoryPage.cartBadge).toHaveCount(0);
 });
 
-test('TC-CART-004: cart displays the correct product details', async ({ page }) => {
+test('TC-CART-004: cart displays the correct product details @regression', async ({ page }) => {
   // Arrange: log in and add the backpack.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -84,7 +85,7 @@ test('TC-CART-004: cart displays the correct product details', async ({ page }) 
   await expect(cartPage.productQuantity).toHaveText('1');
 });
 
-test('TC-CART-005: user can continue shopping from the cart', async ({ page }) => {
+test('TC-CART-005: user can continue shopping from the cart @regression', async ({ page }) => {
   // Arrange: log in and open the cart.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -103,7 +104,7 @@ test('TC-CART-005: user can continue shopping from the cart', async ({ page }) =
   await expect(inventoryPage.title).toHaveText('Products');
 });
 
-test('TC-CART-006: cart contents remain after continuing shopping', async ({ page }) => {
+test('TC-CART-006: cart contents remain after continuing shopping @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -120,7 +121,7 @@ test('TC-CART-006: cart contents remain after continuing shopping', async ({ pag
   await expect(cartPage.cartItems).toContainText('Sauce Labs Backpack');
 });
 
-test('TC-CART-007: two different products can be added to the cart', async ({ page }) => {
+test('TC-CART-007: two different products can be added to the cart @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -139,7 +140,7 @@ test('TC-CART-007: two different products can be added to the cart', async ({ pa
   ]);
 });
 
-test('TC-CART-008: removing one product leaves the other product in the cart', async ({ page }) => {
+test('TC-CART-008: removing one product leaves the other product in the cart @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -158,7 +159,7 @@ test('TC-CART-008: removing one product leaves the other product in the cart', a
   await expect(cartPage.cartItems).not.toContainText('Sauce Labs Backpack');
 });
 
-test('TC-CART-009: cart badge shows the number of products added', async ({ page }) => {
+test('TC-CART-009: cart badge shows the number of products added @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -171,7 +172,7 @@ test('TC-CART-009: cart badge shows the number of products added', async ({ page
   await expect(inventoryPage.cartBadge).toHaveText('2');
 });
 
-test('TC-CART-010: checkout button opens the checkout information page', async ({ page }) => {
+test('TC-CART-010: checkout button opens the checkout information page @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');

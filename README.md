@@ -125,3 +125,40 @@ Use the reports and captured evidence to investigate failures before changing se
 ## Project Status
 
 Core UI automation and cross-browser CI have been implemented. Final documentation and project review are in progress.
+
+## Test Suites
+
+The framework separates critical smoke tests from the full regression suite using Playwright test tags.
+
+### Smoke Tests
+
+Run a quick check of the primary purchase journey:
+
+```bash
+npm run test:smoke
+```
+
+### Regression Tests
+
+Run all tests tagged for regression coverage:
+
+```bash
+npm run test:regression
+```
+
+### Run Against Chromium Only
+
+```bash
+npm run test:smoke -- --project=chromium
+npm run test:regression -- --project=chromium
+```
+
+### Test Coverage
+
+- Authentication and login validation
+- Product inventory and sorting
+- Shopping cart operations
+- Checkout validation and order overview
+- End-to-end purchase journeys
+
+The current Chromium execution results are **1/1 smoke tests passed** and **32/32 regression tests passed**. These results describe the recorded local runs, not a guarantee of future test outcomes.

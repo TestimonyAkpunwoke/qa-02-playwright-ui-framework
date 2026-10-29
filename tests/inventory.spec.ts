@@ -1,8 +1,9 @@
+
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 
-test('TC-INV-001: standard user can view the inventory page', async ({ page }) => {
+test('TC-INV-001: standard user can view the inventory page @regression', async ({ page }) => {
   // Arrange: log in with a valid account.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -18,8 +19,7 @@ test('TC-INV-001: standard user can view the inventory page', async ({ page }) =
   await expect(inventoryPage.cartLink).toBeVisible();
 });
 
-
-test('TC-INV-002: products can be sorted by name A to Z', async ({ page }) => {
+test('TC-INV-002: products can be sorted by name A to Z @regression', async ({ page }) => {
   // Arrange: log in and open the inventory page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -31,23 +31,21 @@ test('TC-INV-002: products can be sorted by name A to Z', async ({ page }) => {
   await inventoryPage.sortProducts('az');
 
   // Assert: verify the product names are in alphabetical order.
-const productNames = await page
-  .getByTestId('inventory-item-name')
-  .allTextContents();
+  const productNames = await page
+    .getByTestId('inventory-item-name')
+    .allTextContents();
 
-expect(productNames).toEqual([
-  'Sauce Labs Backpack',
-  'Sauce Labs Bike Light',
-  'Sauce Labs Bolt T-Shirt',
-  'Sauce Labs Fleece Jacket',
-  'Sauce Labs Onesie',
-  'Test.allTheThings() T-Shirt (Red)',
-]);
+  expect(productNames).toEqual([
+    'Sauce Labs Backpack',
+    'Sauce Labs Bike Light',
+    'Sauce Labs Bolt T-Shirt',
+    'Sauce Labs Fleece Jacket',
+    'Sauce Labs Onesie',
+    'Test.allTheThings() T-Shirt (Red)',
+  ]);
 });
 
-
-
-test('TC-INV-003: products can be sorted by name Z to A', async ({ page }) => {
+test('TC-INV-003: products can be sorted by name Z to A @regression', async ({ page }) => {
   // Arrange: log in and prepare the inventory page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -64,18 +62,16 @@ test('TC-INV-003: products can be sorted by name Z to A', async ({ page }) => {
     .allTextContents();
 
   expect(productNames).toEqual([
-  'Test.allTheThings() T-Shirt (Red)',
-  'Sauce Labs Onesie',
-  'Sauce Labs Fleece Jacket',
-  'Sauce Labs Bolt T-Shirt',
-  'Sauce Labs Bike Light',
-  'Sauce Labs Backpack',
-]);
+    'Test.allTheThings() T-Shirt (Red)',
+    'Sauce Labs Onesie',
+    'Sauce Labs Fleece Jacket',
+    'Sauce Labs Bolt T-Shirt',
+    'Sauce Labs Bike Light',
+    'Sauce Labs Backpack',
+  ]);
 });
 
-
-
-test('TC-INV-004: products can be sorted by price low to high', async ({ page }) => {
+test('TC-INV-004: products can be sorted by price low to high @regression', async ({ page }) => {
   // Arrange: log in and prepare the inventory page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -98,9 +94,7 @@ test('TC-INV-004: products can be sorted by price low to high', async ({ page })
   expect(prices).toEqual([...prices].sort((a, b) => a - b));
 });
 
-
-
-test('TC-INV-005: products can be sorted by price high to low', async ({ page }) => {
+test('TC-INV-005: products can be sorted by price high to low @regression', async ({ page }) => {
   // Arrange: log in and prepare the inventory page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();

@@ -1,7 +1,8 @@
+
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
-test('TC-LOGIN-001: standard user can log in', async ({ page }) => {
+test('TC-LOGIN-001: standard user can log in @regression', async ({ page }) => {
   // Arrange: prepare the login page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -13,9 +14,7 @@ test('TC-LOGIN-001: standard user can log in', async ({ page }) => {
   await expect(page).toHaveURL(/inventory\.html/);
 });
 
-
-
-test('TC-LOGIN-002: invalid password shows an error', async ({ page }) => {
+test('TC-LOGIN-002: invalid password shows an error @regression', async ({ page }) => {
   // Arrange: open the login page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -30,9 +29,7 @@ test('TC-LOGIN-002: invalid password shows an error', async ({ page }) => {
   );
 });
 
-
-
-test('TC-LOGIN-003: locked-out user cannot log in', async ({ page }) => {
+test('TC-LOGIN-003: locked-out user cannot log in @regression', async ({ page }) => {
   // Arrange: prepare the login page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -47,9 +44,7 @@ test('TC-LOGIN-003: locked-out user cannot log in', async ({ page }) => {
   );
 });
 
-
-
-test('TC-LOGIN-004: empty username shows a validation error', async ({ page }) => {
+test('TC-LOGIN-004: empty username shows a validation error @regression', async ({ page }) => {
   // Arrange: prepare the login page.
   const loginPage = new LoginPage(page);
   await loginPage.goto();
@@ -62,9 +57,7 @@ test('TC-LOGIN-004: empty username shows a validation error', async ({ page }) =
   await expect(loginPage.error).toContainText('Username is required');
 });
 
-
-
-test('TC-LOGIN-005: empty password shows a validation error', async ({ page }) => {
+test('TC-LOGIN-005: empty password shows a validation error @regression', async ({ page }) => {
   // Arrange
   const loginPage = new LoginPage(page);
   await loginPage.goto();

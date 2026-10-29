@@ -1,10 +1,11 @@
+
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 
-test('TC-CHECKOUT-001: checkout opens from the cart', async ({ page }) => {
+test('TC-CHECKOUT-001: checkout opens from the cart @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -21,7 +22,7 @@ test('TC-CHECKOUT-001: checkout opens from the cart', async ({ page }) => {
   await expect(checkoutPage.title).toHaveText('Checkout: Your Information');
 });
 
-test('TC-CHECKOUT-002: first name is required', async ({ page }) => {
+test('TC-CHECKOUT-002: first name is required @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -40,7 +41,7 @@ test('TC-CHECKOUT-002: first name is required', async ({ page }) => {
   await expect(checkoutPage.error).toContainText('First Name is required');
 });
 
-test('TC-CHECKOUT-003: last name is required', async ({ page }) => {
+test('TC-CHECKOUT-003: last name is required @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -59,7 +60,7 @@ test('TC-CHECKOUT-003: last name is required', async ({ page }) => {
   await expect(checkoutPage.error).toContainText('Last Name is required');
 });
 
-test('TC-CHECKOUT-004: postal code is required', async ({ page }) => {
+test('TC-CHECKOUT-004: postal code is required @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -78,7 +79,7 @@ test('TC-CHECKOUT-004: postal code is required', async ({ page }) => {
   await expect(checkoutPage.error).toContainText('Postal Code is required');
 });
 
-test('TC-CHECKOUT-005: valid customer information opens order overview', async ({ page }) => {
+test('TC-CHECKOUT-005: valid customer information opens order overview @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -98,8 +99,7 @@ test('TC-CHECKOUT-005: valid customer information opens order overview', async (
   await expect(checkoutPage.title).toHaveText('Checkout: Overview');
 });
 
-
-test('TC-CHECKOUT-006: order overview displays the selected product and price', async ({ page }) => {
+test('TC-CHECKOUT-006: order overview displays the selected product and price @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -119,7 +119,7 @@ test('TC-CHECKOUT-006: order overview displays the selected product and price', 
   await expect(cartPage.productPrice).toHaveText('$29.99');
 });
 
-test('TC-CHECKOUT-007: order overview displays the item total and total with tax', async ({ page }) => {
+test('TC-CHECKOUT-007: order overview displays the item total and total with tax @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -139,7 +139,7 @@ test('TC-CHECKOUT-007: order overview displays the item total and total with tax
   await expect(page.getByTestId('total-label')).toContainText('Total');
 });
 
-test('TC-CHECKOUT-008: finishing the order displays confirmation', async ({ page }) => {
+test('TC-CHECKOUT-008: finishing the order displays confirmation @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -159,7 +159,7 @@ test('TC-CHECKOUT-008: finishing the order displays confirmation', async ({ page
   await expect(checkoutPage.confirmationMessage).toHaveText('Thank you for your order!');
 });
 
-test('TC-CHECKOUT-009: completed order can return to products', async ({ page }) => {
+test('TC-CHECKOUT-009: completed order can return to products @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
@@ -180,7 +180,7 @@ test('TC-CHECKOUT-009: completed order can return to products', async ({ page })
   await expect(inventoryPage.title).toHaveText('Products');
 });
 
-test('TC-CHECKOUT-010: checkout can be cancelled from the information page', async ({ page }) => {
+test('TC-CHECKOUT-010: checkout can be cancelled from the information page @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');

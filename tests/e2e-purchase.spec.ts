@@ -4,7 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 
-test('TC-E2E-001: user completes a purchase successfully', async ({ page }) => {
+test('TC-E2E-001: user completes a purchase successfully @smoke @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const inventoryPage = new InventoryPage(page);
   const cartPage = new CartPage(page);
@@ -30,7 +30,7 @@ test('TC-E2E-001: user completes a purchase successfully', async ({ page }) => {
   await expect(checkoutPage.confirmationMessage).toHaveText('Thank you for your order!');
 });
 
-test('TC-E2E-002: user purchases multiple products successfully', async ({ page }) => {
+test('TC-E2E-002: user purchases multiple products successfully @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const inventoryPage = new InventoryPage(page);
   const cartPage = new CartPage(page);
